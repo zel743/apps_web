@@ -1,3 +1,6 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" class="h-full">
 <head>
   <meta charset="UTF-8">
   <title>Titleee</title>
@@ -5,15 +8,14 @@
 </head>
 <body>
   <h1>Menu</h1>
-
   <center>
   <section id="gallery">
     <div class="gallery-container">
       <figure class="gallery-item">
-        <img src="imagenes/inicio1.png" alt="Imagen 1">
+        <img src="{% static 'images/inicio1.png' %}" alt="Imagen 1">
       </figure>
       <figure class="gallery-item">
-        <img src="imagenes/inicio2.png" alt="Imagen 2">
+        <img src="{% static 'images/inicio2.png' %}" alt="Imagen 2">
       </figure>
       <figure class="gallery-item">
         <img src="imagenes/inicio3.png" alt="Imagen 3">
@@ -35,3 +37,4 @@
   </section>
   </center>
 </body>
+</html>
