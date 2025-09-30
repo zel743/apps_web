@@ -3,11 +3,15 @@
    margin: 0px;
 }
 main {
-   background: #000000;
+   background: black;
    width: 80%;
    margin: auto;
 }
+body{
+    background-color: black;
 
+
+}
 article {
    width: 90%;
    margin: auto;

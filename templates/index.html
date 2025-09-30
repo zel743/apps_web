@@ -4,10 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Titleee</title>
-  <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
-  <h1>Menu</h1>
+<main>
+   <h1 class="inline-block bg-gradient-to-r from-zinc-400 via-gray-400 to-stone-300
+               shadow-lg shadow-zinc-500/50 text-3xl rounded-xl text-black font-semibold
+               px-6 py-2">Menuu</h1>
   <center>
   <section id="gallery">
     <div class="gallery-container">
@@ -18,7 +22,7 @@
         <img src="{% static 'images/inicio2.png' %}" alt="Imagen 2">
       </figure>
       <figure class="gallery-item">
-        <img src="imagenes/inicio3.png" alt="Imagen 3">
+        <img src="{% static 'images/inicio3.png' %}" alt="Imagen 3">
       </figure>
       <figure class="gallery-item">
         <img src="imagenes/inicio4.png" alt="Imagen 4">
@@ -29,12 +33,15 @@
     </div>
 
     <nav class="gallery-navigation">
-      <button class="nav-button prev-button">Anterior</button>
-      <button class="nav-button next-button">Siguiente</button>
+      <button class="bg-sky-500/100 ...">Anterior</button>
+      <button class="bg-sky-500/100 ...">Siguiente</button>
     </nav>
 
-    <img src="imagenes/IMAGENES2.png" alt="inf">
+    <img src="{% static 'images/IMAGENES2.png' %}" alt="imagen banner">
   </section>
   </center>
+      </main>
 </body>
+
+
 </html>
