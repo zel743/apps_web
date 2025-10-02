@@ -8,3 +8,6 @@ def index(request):
 # Create your views here.
 def historia(request):
     return render(request, 'historia.html')
+
+def contactos(request):
+    return render(request, 'contactos.html')
