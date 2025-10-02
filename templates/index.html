@@ -1,120 +1,158 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="es" class="h-full">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Titleee</title>
+  <title>Navbar + Carrusel</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Flowbite (necesario para data-carousel) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.min.css" rel="stylesheet" />
 </head>
 
-<body class="min-h-screen bg-gray-50 text-gray-900">
-  <main class="max-w-5xl mx-auto px-4 py-8 space-y-8">
-    <!-- Título -->
-    <h1
-      class="inline-block bg-gradient-to-r from-zinc-400 via-gray-400 to-stone-300
-                 shadow-lg shadow-zinc-500/50 text-3xl rounded-xl text-black font-semibold
-                 px-6 py-2">
-      Menuu
-    </h1>
+<body class="bg-white text-gray-900">
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-3">
+          <img
+            src="{% static 'images/Screenshot 2025-10-02 123349.png' %}"
+            alt="Ragasa"
+            class="h-8 w-auto"
+          />
+          <span class="font-semibold text-xl">Ragasa</span>
+        </a>
 
-    <!-- Navegación simple -->
-    <nav class="flex items-center gap-3">
-      <button class="px-4 py-2 rounded-lg bg-white shadow hover:bg-gray-100">Inicio</button>
-      <button class="px-4 py-2 rounded-lg bg-white shadow hover:bg-gray-100">Historia</button>
-      <button class="px-4 py-2 rounded-lg bg-white shadow hover:bg-gray-100">Productos</button>
-      <button class="px-4 py-2 rounded-lg bg-white shadow hover:bg-gray-100">Contacto</button>
+        <!-- Botón móvil -->
+        <button id="btnMenu" class="md:hidden inline-flex items-center p-2 rounded-md hover:bg-gray-100" aria-label="Abrir menú" aria-expanded="false">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- NAV desktop -->
+        <nav id="navDesktop" class="hidden md:flex items-center gap-6">
+          <a href="/" class="text-sm font-semibold tracking-wide py-6 border-b-2 border-lime-500 text-lime-600">INICIO</a>
+          <a href="/quienes-somos" class="text-sm font-semibold tracking-wide py-6 hover:text-lime-600 transition">QUIÉNES SOMOS</a>
+
+          <div class="relative group">
+            <button class="text-sm font-semibold tracking-wide py-6 hover:text-lime-600 transition flex items-center gap-1">
+              PRODUCTOS
+              <svg class="w-4 h-4 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+
+            <div class="invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition
+                        absolute left-0 mt-2 w-64 rounded-xl border bg-white shadow-lg p-2">
+              <ul class="text-sm">
+                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/nutrioli">Nutrioli</a></li>
+                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/sabrosano">Sabrosano</a></li>
+                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/ave">Ave</a></li>
+                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/gran-tradicion">Gran Tradición</a></li>
+                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/commodities">Commodities</a></li>
+                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/refinados-mezclas">Refinados y Mezclas</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <a href="/contacto" class="text-sm font-semibold tracking-wide py-6 hover:text-lime-600 transition">CONTACTO</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- NAV móvil -->
+    <nav id="navMobile" class="md:hidden hidden border-t">
+      <div class="px-4 py-2 space-y-1">
+        <a href="/" class="block px-2 py-2 font-semibold hover:bg-gray-50">INICIO</a>
+        <a href="historia.html" class="block px-2 py-2 font-semibold hover:bg-gray-50">Historia</a>
+
+        <details class="group">
+          <summary class="flex items-center justify-between cursor-pointer px-2 py-2 font-semibold hover:bg-gray-50">
+            PRODUCTOS
+            <svg class="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/>
+            </svg>
+          </summary>
+          <div class="pl-3 py-1 space-y-1">
+            <a class="block px-2 py-1 text-sm text-gray-700 hover:bg-gray-50 rounded" href="/productos/nutrioli">Nutrioli</a>
+            <a class="block px-2 py-1 text-sm text-gray-700 hover:bg-gray-50 rounded" href="/productos/sabrosano">Sabrosano</a>
+            <a class="block px-2 py-1 text-sm text-gray-700 hover:bg-gray-50 rounded" href="/productos/ave">Ave</a>
+            <a class="block px-2 py-1 text-sm text-gray-700 hover:bg-gray-50 rounded" href="/productos/gran-tradicion">Gran Tradición</a>
+            <a class="block px-2 py-1 text-sm text-gray-700 hover:bg-gray-50 rounded" href="/productos/commodities">Commodities</a>
+            <a class="block px-2 py-1 text-sm text-gray-700 hover:bg-gray-50 rounded" href="/productos/refinados-mezclas">Refinados y Mezclas</a>
+          </div>
+        </details>
+
+        <a href="/contacto" class="block px-2 py-2 font-semibold hover:bg-gray-50">CONTACTO</a>
+      </div>
     </nav>
+  </header>
 
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <!-- Carrusel -->
     <div class="flex justify-center">
       <div id="default-carousel" class="relative w-full max-w-4xl" data-carousel="slide">
-        <!-- Contenedor de slides -->
         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-          <!-- Item 1 -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-            <img src="{% static 'images/inicio1.png' %}"
-                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                 alt="imagen1">
+            <img src="{% static 'images/inicio1.png' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="imagen1">
           </div>
-          <!-- Item 2 -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{% static 'images/inicio2.png' %}"
-                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                 alt="imagen2">
+            <img src="{% static 'images/inicio2.png' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="imagen2">
           </div>
-          <!-- Item 3 -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{% static 'images/inicio3.png' %}"
-                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                 alt="imagen3">
+            <img src="{% static 'images/inicio3.png' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="imagen3">
           </div>
-          <!-- Item 4 -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{% static 'images/inicio4.png' %}"
-                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                 alt="imagen4">
+            <img src="{% static 'images/inicio4.png' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="imagen4">
           </div>
-          <!-- Item 5 -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{% static 'images/inicio5.png' %}"
-                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                 alt="imagen5">
+            <img src="{% static 'images/inicio5.png' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="imagen5">
           </div>
         </div>
 
-        <!-- Indicadores -->
-        <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+        <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
+          <button type="button" class="w-3 h-3 rounded-full" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+          <button type="button" class="w-3 h-3 rounded-full" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+          <button type="button" class="w-3 h-3 rounded-full" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+          <button type="button" class="w-3 h-3 rounded-full" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+          <button type="button" class="w-3 h-3 rounded-full" aria-label="Slide 5" data-carousel-slide-to="4"></button>
         </div>
 
-        <!-- Controles -->
-        <button type="button"
-                class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                data-carousel-prev>
-          <span
-            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30
-                   group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white
-                   dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M5 1 1 5l4 4"/>
-            </svg>
+        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group" data-carousel-prev>
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+            <svg class="w-4 h-4" viewBox="0 0 6 10" fill="none"><path d="M5 1 1 5l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="sr-only">Previous</span>
           </span>
         </button>
-        <button type="button"
-                class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                data-carousel-next>
-          <span
-            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30
-                   group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white
-                   dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="m1 9 4-4-4-4"/>
-            </svg>
+        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group" data-carousel-next>
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+            <svg class="w-4 h-4" viewBox="0 0 6 10" fill="none"><path d="m1 9 4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="sr-only">Next</span>
           </span>
         </button>
       </div>
     </div>
 
-    <!-- Banner inferior -->
-    <div class="flex justify-center">
+    <!-- Banner -->
+   <div class="mt-8 flex justify-center">
       <img src="{% static 'images/IMAGENES2.png' %}" alt="imagen banner" class="rounded-lg shadow max-w-4xl w-full">
     </div>
   </main>
 
-  <!-- Scripts (Flowbite requiere este JS) -->
+  <div class="mt-8 flex justify-center">
+      <img src="{% static 'images/Screenshot 2025-10-02 123233.png' %}" alt="imagen banner" class="rounded-lg shadow max-w-4xl w-full">
+    </div>
+  </main>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.min.js"></script>
+  <script>
+    const btn = document.getElementById('btnMenu');
+    const navMobile = document.getElementById('navMobile');
+    btn.addEventListener('click', () => {
+      const open = navMobile.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  </script>
 </body>
 </html>
