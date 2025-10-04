@@ -1,21 +1,14 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% load static %}
-{% block content%}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contactos</title>
-</head>
+{% block content %}
+<main class="w-full">
 
-<body>
-    <div class="content-center">
-        <h1>Contactos</h1>
+    <!-- Imagen de Contacto (full width) -->
+    <section class="mt-4">
+        <img src="{% static 'images/abajote.png' %}" alt="Sección de Contacto Ragasa" class="w-full h-auto block"
+            loading="lazy">
+    </section>
 
-    </div>
-</body>
-
-</html>
+</main>
 {% endblock %}
