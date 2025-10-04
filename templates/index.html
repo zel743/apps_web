@@ -1,47 +1,117 @@
+{% extends 'base.html' %}
 {% load static %}
+
+{% block content %}
 <!DOCTYPE html>
-<html lang="es" class="h-full">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Titleee</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Navbar + Carrusel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.min.css" rel="stylesheet" />
 </head>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Carrusel -->
+  <div class="flex justify-center">
+    <div id="default-carousel" class="relative w-full max-w-4xl" data-carousel="slide">
+      <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+        <!-- Slide 1 (activo) -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+          <img src="{% static 'images/inicio1.png' %}"
+               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+               alt="imagen 1">
+        </div>
+        <!-- Slides 2..5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="{% static 'images/inicio2.png' %}"
+               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+               alt="imagen 2">
+        </div>
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="{% static 'images/inicio3.png' %}"
+               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+               alt="imagen 3">
+        </div>
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="{% static 'images/inicio4.png' %}"
+               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+               alt="imagen 4">
+        </div>
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="{% static 'images/inicio5.png' %}"
+               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+               alt="imagen 5">
+        </div>
+      </div>
 
-<body>
-<main>
-   <h1 class="inline-block bg-gradient-to-r from-zinc-400 via-gray-400 to-stone-300
-               shadow-lg shadow-zinc-500/50 text-3xl rounded-xl text-black font-semibold
-               px-6 py-2">Menuu</h1>
-  <center>
-  <section id="gallery">
-    <div class="gallery-container">
-      <figure class="gallery-item">
-        <img src="{% static 'images/inicio1.png' %}" alt="Imagen 1">
-      </figure>
-      <figure class="gallery-item">
-        <img src="{% static 'images/inicio2.png' %}" alt="Imagen 2">
-      </figure>
-      <figure class="gallery-item">
-        <img src="{% static 'images/inicio3.png' %}" alt="Imagen 3">
-      </figure>
-      <figure class="gallery-item">
-        <img src="imagenes/inicio4.png" alt="Imagen 4">
-      </figure>
-      <figure class="gallery-item">
-        <img src="imagenes/inicio5.png" alt="Imagen 5">
-      </figure>
+      <!-- Indicadores -->
+      <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
+        <button type="button" class="w-3 h-3 rounded-full" data-carousel-slide-to="0" aria-label="Slide 1"></button>
+        <button type="button" class="w-3 h-3 rounded-full" data-carousel-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" class="w-3 h-3 rounded-full" data-carousel-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" class="w-3 h-3 rounded-full" data-carousel-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" class="w-3 h-3 rounded-full" data-carousel-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+
+      <!-- Controles -->
+      <button type="button"
+              class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group"
+              data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+          <svg class="w-4 h-4" viewBox="0 0 6 10" fill="none" aria-hidden="true">
+            <path d="M5 1 1 5l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="sr-only">Anterior</span>
+        </span>
+      </button>
+
+      <button type="button"
+              class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group"
+              data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+          <svg class="w-4 h-4" viewBox="0 0 6 10" fill="none" aria-hidden="true">
+            <path d="m1 9 4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="sr-only">Siguiente</span>
+        </span>
+      </button>
     </div>
+  </div>
 
-    <nav class="gallery-navigation">
-      <button class="bg-sky-500/100 ...">Anterior</button>
-      <button class="bg-sky-500/100 ...">Siguiente</button>
-    </nav>
+  <!-- Banner -->
+  <div class="mt-8 flex justify-center">
+    <img src="{% static 'images/IMAGENES2.png' %}"
+         alt="imagen banner"
+         class="rounded-lg shadow max-w-4xl w-full">
+  </div>
+</main>
 
-    <img src="{% static 'images/IMAGENES2.png' %}" alt="imagen banner">
-  </section>
-  </center>
-      </main>
-</body>
+<footer class="mt-12">
+  <div class="bg-yellow-200"> 
+    <div class="max-w-7xl mx-auto px-6 flex items-start gap-4">
+      <!-- Logo -->
+      <img src="{% static 'images/Screenshot 2025-10-02 123349.png' %}"
+           alt="Ragasa" 
+           class="h-12 w-auto">
 
+      <!-- Texto -->
+      <div>
+        <h4 class="text-lg font-semibold mb-1">Al público en general</h4>
+        <p class="text-sm text-gray-900 leading-relaxed">
+          Ragasa Industrias, S.A. de C.V. y sus empresas filiales informan que en ningún Estado de la República Mexicana 
+          promueven la venta al público de vehículos nuevos o usados, ya sea a través de páginas de Internet, avisos de ocasión 
+          electrónicos o impresos, redes sociales o correos electrónicos, por lo que previene a la población en general sobre el uso indebido 
+          de los nombres de nuestras empresas y marcas registradas, para llevar a cabo este tipo de actividades.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
 
-</html>
+{% endblock %}
+
+{% block extra_js %}
+  <!-- Flowbite JS necesario para el carrusel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.min.js"></script>
+{% endblock %}
