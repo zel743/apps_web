@@ -18,7 +18,7 @@
         <a href="/" class="flex items-center gap-3">
             <img
             src="{% static 'images/Screenshot 2025-10-02 123349.png' %}"
-            class="h-8 w-auto"
+            class="h-16 w-auto"
             >
             
         </a>
@@ -33,42 +33,66 @@
         <!-- NAV desktop -->
         <nav id="navDesktop" class="hidden md:flex items-center gap-6">
             <a href="/" class="text-sm font-semibold tracking-wide py-6 border-b-2 border-lime-500 text-lime-600">INICIO</a>
-            <div class="relative group">
-            <button class="text-sm font-semibold tracking-wide py-6 hover:text-lime-600 transition flex items-center gap-1">
-                QUIENES SOMOS
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/>
-            </svg>
-            </button>
+            <div class="relative group/menu">
+  <button
+    class="inline-flex items-center gap-1 px-4 py-6 text-sm font-semibold tracking-wide hover:text-lime-600 transition"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    QUIÉNES SOMOS
+    <svg class="w-4 h-4 transition-transform group-hover/menu:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/>
+    </svg>
+  </button>
 
-            <div class="invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition
-                        absolute left-0 mt-2 w-64 rounded-xl border bg-white shadow-lg p-2">
-            <ul class="text-sm">
-                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/historia">historia</a></li>
-              </ul>
-            </div>
-          </div>
+  <!-- Dropdown -->
+  <div
+    class="absolute left-0 top-full mt-0 w-64 rounded-xl border bg-white shadow-lg p-2 z-50
+           opacity-0 invisible pointer-events-none translate-y-1 transition
+           group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:pointer-events-auto group-hover/menu:translate-y-0
+           group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:pointer-events-auto group-focus-within/menu:translate-y-0"
+    role="menu"
+  >
+    <ul class="text-sm">
+      <li>
+        <a class="block w-full px-4 py-3 rounded-lg hover:bg-gray-100" href="/historia" role="menuitem">Historia</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
-          <div class="relative group">
-            <button class="text-sm font-semibold tracking-wide py-6 hover:text-lime-600 transition flex items-center gap-1">
-              PRODUCTOS
-              <svg class="w-4 h-4 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/>
-              </svg>
-            </button>
 
-            <div class="invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition
-                        absolute left-0 mt-2 w-64 rounded-xl border bg-white shadow-lg p-2">
-              <ul class="text-sm">
-                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/nutrioli">Nutrioli</a></li>
-                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/sabrosano">Sabrosano</a></li>
-                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/ave">Ave</a></li>
-                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/gran-tradicion">Gran Tradición</a></li>
-                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/commodities">Commodities</a></li>
-                <li><a class="block px-4 py-2 rounded-lg hover:bg-gray-100" href="/productos/refinados-mezclas">Refinados y Mezclas</a></li>
-              </ul>
-            </div>
-          </div>
+          <div class="relative group/menu">
+  <button
+    class="inline-flex items-center gap-1 px-4 py-6 text-sm font-semibold tracking-wide hover:text-lime-600 transition"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    PRODUCTOS
+    <svg class="w-4 h-4 transition-transform group-hover/menu:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/>
+    </svg>
+  </button>
+
+  <!-- Dropdown -->
+  <div
+    class="absolute left-0 top-full mt-0 w-64 rounded-xl border bg-white shadow-lg p-2 z-50
+           opacity-0 invisible pointer-events-none translate-y-1 transition
+           group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:pointer-events-auto group-hover/menu:translate-y-0
+           group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:pointer-events-auto group-focus-within/menu:translate-y-0"
+    role="menu"
+  >
+    <ul class="text-sm">
+      <li><a class="block w-full px-4 py-3 rounded-lg hover:bg-gray-100" href="/productos/nutrioli">Nutrioli</a></li>
+      <li><a class="block w-full px-4 py-3 rounded-lg hover:bg-gray-100" href="/productos/sabrosano">Sabrosano</a></li>
+      <li><a class="block w-full px-4 py-3 rounded-lg hover:bg-gray-100" href="/productos/ave">Ave</a></li>
+      <li><a class="block w-full px-4 py-3 rounded-lg hover:bg-gray-100" href="/productos/gran-tradicion">Gran Tradición</a></li>
+      <li><a class="block w-full px-4 py-3 rounded-lg hover:bg-gray-100" href="/productos/commodities">Commodities</a></li>
+      <li><a class="block w-full px-4 py-3 rounded-lg hover:bg-gray-100" href="/productos/refinados-mezclas">Refinados y Mezclas</a></li>
+    </ul>
+  </div>
+</div>
+
 
           <a href="/contactos" class="text-sm font-semibold tracking-wide py-6 hover:text-lime-600 transition">CONTACTO</a>
         </nav>
@@ -98,7 +122,7 @@
           </div>
         </details>
 
-        <a href="/contacto" class="block px-2 py-2 font-semibold hover:bg-gray-50">CONTACTO</a>
+        <a href="/contactos" class="block px-2 py-2 font-semibold hover:bg-gray-50">CONTACTO</a>
       </div>
     </nav>
   </header>
