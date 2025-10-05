@@ -162,4 +162,4 @@ __pycache__/
 *.pyo
 *.pyd
 
-settings.py
+.env
